@@ -1,0 +1,16 @@
+$mappage-header-height: 70px;
+
+@import "_colours";
+@import "../sass/layout";
+
+// XXX Should this be the default.
+// Or have a var to pick it.
+.big-green-banner {
+  text-transform: none;
+}
+
+/* XXX Should this be the default. Makes it more button like */
+.nav-menu--main a.report-a-problem-btn {
+    padding: 0.75em;
+    margin: 0;
+}
