@@ -31,6 +31,6 @@ install:
   - .travis/install
 before_script:
   - commonlib/bin/gettext-makemo FixMyStreet
-script: "bin/run-tests t"
+script: "script/test"
 after_success:
   - .travis/after_script
