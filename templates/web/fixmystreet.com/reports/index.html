@@ -1,0 +1,16 @@
+[% extra_js = [
+    version('/js/moment.min.js'),
+    version('/js/chart.min.js'),
+    version('/cobrands/fixmystreet.com/dashboard.js')
+] -%]
+[% INCLUDE 'header.html', title = loc('Dashboard'), bodyclass => 'dashboard fullwidthpage' %]
+
+<div>
+    <h1>[% loc('Dashboard') %]</h1>
+</div>
+
+<div>
+  <canvas id="chart-all-reports" width="600" height="300"></canvas>
+</div>
+
+[% INCLUDE 'footer.html' %]
