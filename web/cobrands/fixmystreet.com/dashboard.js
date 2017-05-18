@@ -3,7 +3,44 @@ $(function(){
     Chart.defaults.global.defaultFontFamily = "'MuseoSans', 'Helmet', 'Freesans', sans-serif";
     Chart.defaults.global.defaultFontSize = 16;
 
-    var chartAllReports = new Chart($('#chart-all-reports'), {
+    var setUpLabelsForChart = function(chart){
+        var $parent = $(chart.chart.canvas).parent();
+        var xGutterInPixels = 30;
+
+        $.each(chart.config.data.datasets, function(datasetIndex, dataset){
+            var $label = $('.label[data-datasetIndex="' + datasetIndex + '"]', $parent);
+
+            if($label.length === 0) {
+                var datasetColor = dataset.borderColor;
+                var datasetLabel = dataset.label;
+                var latestValue = dataset.data[ dataset.data.length - 1 ];
+
+                $label = $('<span>').addClass('label').appendTo($parent);
+                $label.attr('data-datasetIndex', datasetIndex);
+                $('<strong>').text(latestValue).css('color', datasetColor).appendTo($label);
+                $('<span>').text(datasetLabel).appendTo($label);
+            }
+
+            var latestPoint = chart.getDatasetMeta(datasetIndex).data[ dataset.data.length - 1 ];
+            $label.css({
+                top: latestPoint._model.y,
+                left: latestPoint._model.x + xGutterInPixels
+            });
+        });
+    };
+
+    // Returns an array `numberOfPoints` long, where the final item
+    // is `radius`, and all the other items are 0.
+    var pointRadiusFinalDot = function(numberOfPoints, radius){
+        var pointRadius = [];
+        for (var i=1; i < numberOfPoints; i++) {
+            pointRadius.push(0);
+        }
+        pointRadius.push(radius);
+        return pointRadius;
+    };
+
+    window.chartAllReports = new Chart($('#chart-all-reports'), {
         type: 'line',
         data: {
             labels: [
@@ -18,10 +55,7 @@ $(function(){
                 ],
                 fill: false,
                 borderWidth: 3,
-                pointRadius: [
-                    0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 4
-                ],
+                pointRadius: pointRadiusFinalDot(10, 4),
                 pointBackgroundColor: '#F4A140',
                 pointHitRadius: 0,
                 pointBorderWidth: 0,
@@ -34,10 +68,7 @@ $(function(){
                 ],
                 fill: false,
                 borderWidth: 3,
-                pointRadius: [
-                    0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 4
-                ],
+                pointRadius: pointRadiusFinalDot(10, 4),
                 pointBackgroundColor: '#62B356',
                 pointHitRadius: 0,
                 pointBorderWidth: 0,
@@ -47,7 +78,10 @@ $(function(){
         options: {
             responsive: true,
             animation: {
-                duration: 0
+                duration: 0,
+                onComplete: function(){
+                    setUpLabelsForChart(this);
+                }
             },
             legend: {
                 display: false
@@ -78,6 +112,9 @@ $(function(){
                         drawBorder: false
                     }
                 }]
+            },
+            onResize: function(chart, size){
+                setUpLabelsForChart(chart);
             }
         }
     });

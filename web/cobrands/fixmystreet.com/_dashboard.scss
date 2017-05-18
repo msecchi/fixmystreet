@@ -1,0 +1,27 @@
+.labelled-line-chart {
+    @include box-sizing(border-box);
+    position: relative;
+    width: 100%;
+    padding-right: 20%;
+
+    canvas {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    .label {
+        position: absolute;
+        margin-top: -1em;
+
+        strong {
+            display: block;
+            font-size: 2em;
+            line-height: 1em;
+            margin-bottom: 0.1em;
+            font-weight: bold;
+        }
+
+        span {
+        }
+    }
+}
