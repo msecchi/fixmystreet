@@ -5,12 +5,31 @@
 ] -%]
 [% INCLUDE 'header.html', title = loc('Dashboard'), bodyclass => 'dashboard fullwidthpage' %]
 
-<div>
+<div class="dashboard-header">
     <h1>[% loc('Dashboard') %]</h1>
 </div>
 
-<div class="labelled-line-chart">
-    <canvas id="chart-all-reports" width="600" height="300"></canvas>
+<div class="dashboard-row">
+    <div class="dashboard-item dashboard-item--12">
+        <h2>UK: All time</h2>
+        <div class="labelled-line-chart">
+            <canvas id="chart-all-reports" width="600" height="300"></canvas>
+        </div>
+    </div>
+</div>
+
+<div class="dashboard-row">
+    <div class="dashboard-item dashboard-item--6">
+        <h2>UK: Last 7 days</h2>
+        <div style="width: 30%">
+            <div class="labelled-sparkline">
+                <canvas id="sparkline-reported" width="200" height="50"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard-item dashboard-item--6">
+        <p>Search box goes here</p>
+    </div>
 </div>
 
 [% INCLUDE 'footer.html' %]

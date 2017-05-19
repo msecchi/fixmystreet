@@ -118,4 +118,51 @@ $(function(){
             }
         }
     });
+
+    window.chartSparklineReported = new Chart($('#sparkline-reported'), {
+        type: 'line',
+        data: {
+            labels: [
+                "1", "2", "3", "4", "5", "6", "7"
+            ],
+            datasets: [{
+                label: 'Problems reported',
+                data: [
+                    2, 0, 3, 5, 4, 3, 1
+                ],
+                fill: false,
+                borderWidth: 3,
+                pointRadius: pointRadiusFinalDot(7, 4),
+                pointBackgroundColor: '#F4A140',
+                pointHitRadius: 0,
+                pointBorderWidth: 0,
+                borderColor: '#F4A140'
+            }]
+        },
+        options: {
+            responsive: true,
+            animation: {
+                duration: 0,
+                onComplete: function(){
+                    // setUpLabelsForChart(this);
+                }
+            },
+            legend: {
+                display: false
+            },
+            tooltips: {
+                enabled: false
+            },
+            scales: {
+                xAxes: [{
+                    type: "linear",
+                    display: false
+                }],
+                yAxes: [{
+                    type: "linear",
+                    display: false
+                }]
+            }
+        }
+    });
 });

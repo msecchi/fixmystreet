@@ -1,3 +1,48 @@
+.dashboard-header {
+    background-color: $primary;
+    margin: 0 -1em;
+    padding: 1em;
+
+    @media (min-width: 48em) {
+        margin: -1em -1em 0 -1em;
+        padding: 2em;
+    }
+
+    h1 {
+        font-family: inherit;
+        font-weight: bold;
+        margin: 0;
+    }
+}
+
+.dashboard-row {
+    @include clearfix();
+    margin: 0 -1em;
+}
+
+.dashboard-item {
+    @include box-sizing(border-box);
+    float: left;
+    padding: 1em;
+
+    @media (min-width: 48em) {
+        padding: 2em;
+    }
+
+    h2 {
+        font-family: inherit;
+        margin-top: 0;
+    }
+}
+
+.dashboard-item--12 {
+    width: 100%;
+}
+
+.dashboard-item--6 {
+    width: 50%;
+}
+
 .labelled-line-chart {
     @include box-sizing(border-box);
     position: relative;
