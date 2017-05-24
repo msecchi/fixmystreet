@@ -86,4 +86,5 @@ done_testing();
 
 END {
     $mech->delete_user($user);
+    $mech->delete_body($body);
 }
