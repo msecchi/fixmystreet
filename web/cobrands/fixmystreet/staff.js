@@ -121,9 +121,9 @@ $.extend(fixmystreet.set_up, {
       } else if ('shortlist-up' === whatUserWants) {
         $item.insertBefore( $item.prev() );
       } else if ('shortlist-remove' === whatUserWants) {
-          fixmystreet.hooks.toggle_shortlist($submitButton, 'add', report_id);
+          fixmystreet.utils.toggle_shortlist($submitButton, 'add', report_id);
       } else if ('shortlist-add' === whatUserWants) {
-          fixmystreet.hooks.toggle_shortlist($submitButton, 'remove', report_id);
+          fixmystreet.utils.toggle_shortlist($submitButton, 'remove', report_id);
       }
 
       // Items have moved around. We need to make sure the "up" button on the
@@ -141,9 +141,9 @@ $.extend(fixmystreet.set_up, {
         } else if ('shortlist-up' === whatUserWants) {
           $item.insertAfter( $item.next() );
         } else if ('shortlist-remove' === whatUserWants) {
-          fixmystreet.hooks.toggle_shortlist($submitButton, 'remove', report_id);
+          fixmystreet.utils.toggle_shortlist($submitButton, 'remove', report_id);
         } else if ('shortlist-add' === whatUserWants) {
-          fixmystreet.hooks.toggle_shortlist($submitButton, 'add', report_id);
+          fixmystreet.utils.toggle_shortlist($submitButton, 'add', report_id);
         }
         fixmystreet.update_list_item_buttons($list);
       }).complete(function() {
@@ -395,15 +395,6 @@ $.extend(fixmystreet.hooks, {
               $(this).data('autopopulated', false);
             });
         }
-    },
-
-    toggle_shortlist: function(btn, sw, id) {
-        btn.attr('class', 'item-list__item__shortlist-' + sw);
-        btn.attr('title', btn.data('label-' + sw));
-        if (id) {
-            sw += '-' + id;
-        }
-        btn.attr('name', 'shortlist-' + sw);
     }
 
 });
@@ -424,7 +415,7 @@ $.extend(fixmystreet.maps, {
             $form = $item.find('form'),
             $submit = $form.find("input[type='submit']" );
 
-        fixmystreet.hooks.toggle_shortlist($submit, 'remove', problemId);
+        fixmystreet.utils.toggle_shortlist($submit, 'remove', problemId);
 
         items.push({
           'url': '/report/' + $item.data('report-id'),
@@ -464,4 +455,12 @@ $.extend(fixmystreet.utils, {
     defect_type_format: function(data) {
         return data.name;
     },
+    toggle_shortlist: function(btn, sw, id) {
+        btn.attr('class', 'item-list__item__shortlist-' + sw);
+        btn.attr('title', btn.data('label-' + sw));
+        if (id) {
+            sw += '-' + id;
+        }
+        btn.attr('name', 'shortlist-' + sw);
+    }
 });
