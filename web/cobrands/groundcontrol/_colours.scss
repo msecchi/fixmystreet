@@ -1,0 +1,30 @@
+/* COLOURS */
+
+/* Primary is black on lime-ish green
+ * Secondary is bright orange */
+$limeish_green: rgb(180, 209, 76);
+$bright_orange: rgb(245, 118, 43);
+$dark: #222;
+$white: #fff;
+
+$primary: $bright_orange;
+$primary_b: $white;
+$primary_text: $dark;
+
+$base_bg: $white;
+$base_fg: $dark;
+
+$map_nav_bg: $white;
+$nav_fg: $dark;
+$nav_fg_hover: $limeish_green;
+
+$col_click_map: $bright_orange;
+
+$col_fixed_label: $limeish_green;
+$col_fixed_label_dark: #4B8304;
+
+$menu-image: 'menu-black';
+
+$body-font: 'Open Sans', sans-serif;
+$meta-font: $body-font;
+$heading-font: $body-font;
