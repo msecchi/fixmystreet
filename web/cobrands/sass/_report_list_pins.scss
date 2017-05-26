@@ -22,6 +22,9 @@ $pin_prefix: '/i/' !default;
   &.grey a {
       background-image: url('#{$pin_prefix}pin-grey-small.png');
   }
+  &.orange a {
+      background-image: url('#{$pin_prefix}pin-orange-small.png');
+  }
 }
 .item-list--reports__item--selected {
   background: $base_bg;
