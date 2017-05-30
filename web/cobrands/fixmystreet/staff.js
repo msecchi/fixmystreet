@@ -202,24 +202,20 @@ $.extend(fixmystreet.set_up, {
             defect_types_data = $("form#report_inspect_form " + selector).data('defect-types'),
             curr_pri = $priorities.val();
 
-        function populateSelect($select, data) {
+        function populateSelect($select, data, label_formatter) {
           $select.find('option:gt(0)').remove();
           $.each(data, function(k,v) {
+            label = window.fixmystreet.utils[label_formatter](v);
             $select.append($('<option></option>')
-            .attr('value', v.id).text(v.name));
+            .attr('value', v.id).text(label));
           });
         }
 
         $("form#report_inspect_form [data-category]:not(" + selector + ")").addClass("hidden");
         $("form#report_inspect_form " + selector).removeClass("hidden");
 
-        defect_types_data = defect_types_data.map(function(data) {
-          data.name = fixmystreet.utils.defect_type_format(data);
-          return data;
-        });
-
-        populateSelect($priorities, priorities_data);
-        populateSelect($defect_types, defect_types_data);
+        populateSelect($priorities, priorities_data, 'priorities_type_format');
+        populateSelect($defect_types, defect_types_data, 'defect_type_format');
         $priorities.val(curr_pri);
     });
 
@@ -454,6 +450,9 @@ fixmystreet.utils = fixmystreet.utils || {};
 $.extend(fixmystreet.utils, {
     defect_type_format: function(data) {
         return data.name;
+    },
+    priorities_type_format: function(data) {
+      return data.name;
     },
     toggle_shortlist: function(btn, sw, id) {
         btn.attr('class', 'item-list__item__shortlist-' + sw);
