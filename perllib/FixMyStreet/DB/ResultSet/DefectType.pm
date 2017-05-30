@@ -14,7 +14,6 @@ sub join_table {
 
 sub map_extras {
     my ($rs, @ts) = @_;
-    my %meta;
     my $meta;
     my %extra;
     my @keys;
