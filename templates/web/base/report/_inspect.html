@@ -46,7 +46,7 @@
           [% cat_prefix = category | lower | replace('[^a-z]', '') %]
           [% cat_prefix = "category_" _ cat_prefix _ "_" %]
           [% IF category == problem.category %]
-            <p data-category="[% category | html %]" data-defect-types='[% category_defect_types.$category %]'>
+            <p data-category="[% category | html %]" data-priorities='[% priorities_by_category.$category %]' data-defect-types='[% category_defect_types.$category %]'>
               [% INCLUDE 'report/new/category_extras_fields.html' %]
             </p>
           [% ELSE %]
