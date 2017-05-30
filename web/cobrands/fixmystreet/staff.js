@@ -198,8 +198,8 @@ $.extend(fixmystreet.set_up, {
             selector = "[data-category='" + category + "']",
             $priorities = $('#problem_priority'),
             $defect_types = $('#defect_type'),
-            priorities_data = $("form#report_inspect_form " + selector).data('priorities'),
-            defect_types_data = $("form#report_inspect_form " + selector).data('defect-types'),
+            priorities_data = $("form#report_inspect_form " + selector).data('priorities') || [],
+            defect_types_data = $("form#report_inspect_form " + selector).data('defect-types') || [],
             curr_pri = $priorities.val();
 
         function populateSelect($select, data, label_formatter) {
