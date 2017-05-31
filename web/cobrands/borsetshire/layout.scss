@@ -1,0 +1,48 @@
+@import "_colours";
+@import "../sass/layout";
+
+$header-height: 5em;
+
+.big-green-banner {
+  text-transform: none;
+}
+
+#site-header {
+  background-color: $map_nav_bg;
+  height: $header-height;
+
+  body.frontpage & {
+    height: $header-height;
+  }
+}
+
+#main-nav {
+  padding-top: 1em; // vertically centre navs in header
+
+  body.mappage & {
+    padding-top: 0;
+  }
+}
+
+#site-logo {
+  top: 20px;
+  top: calc((#{$header-height} - 40px) / 2);
+
+  body.frontpage & {
+    top: 10px;
+    top: calc((#{$header-height} - 60px) / 2);
+  }
+
+  body.mappage & {
+    top: 12px;
+    top: calc((#{$mappage-header-height} - 40px) / 2);
+  }
+}
+
+.nav-menu--main a.report-a-problem-btn {
+  color: white;
+}
+
+#front-main {
+  background-color: $front_main_background;
+}
