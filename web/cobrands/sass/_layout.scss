@@ -514,7 +514,6 @@ body.authpage {
     width:50%;
   }
   .full-width {
-    width:auto;
     margin:0;
   }
 }
@@ -1002,19 +1001,8 @@ body.frontpage {
       width: 100%;
   }
 
-  // Remove central positioning of mainmenu and float right.
-  // Left padding is to ensure no overlap of the site-logo
-  // Background styling replicates header styling
-
-  #main-nav {
-    width: auto;
-    float: $right;
-    padding-#{$left}: 180px;
-  }
-
-  //Revert to mobile use of the .full-width class
+  //Revert to mobile use of the .full-width class (XXX needed?)
   .full-width{
-    width: auto;
     margin: 0em -1em;
   }
 
